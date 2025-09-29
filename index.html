@@ -182,8 +182,8 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                     <div class="bg-gray-50 rounded-xl p-6 border">
-                        <h3 class="text-xl font-semibold text-gray-800">Proprietary Flight Computer</h3>
-                        <p class="mt-2 text-gray-600">A compact, ruggedized hardware unit hosting the SDAS middleware, guaranteeing performance and security integrity for on-board AI processing. **Manufacturing is outsourced to maintain low CapEx.**</p>
+                        <h3 class="text-xl font-semibold text-gray-800">Proprietary Flight Computer Design</h3>
+                        <p class="mt-2 text-gray-600">A compact, ruggedized hardware unit design hosting the SDAS middleware, guaranteeing performance and security integrity for on-board AI processing. **Manufacturing is outsourced (lean CapEx).**</p>
                     </div>
                     <div class="bg-gray-50 rounded-xl p-6 border">
                         <h3 class="text-xl font-semibold text-gray-800">Dynamic Channel Bonding</h3>
@@ -291,36 +291,37 @@
                     </div>
                 </div>
                 <div class="text-center mt-12">
-                    <p class="text-xl text-gray-600">Target ARPU (Average Revenue Per Unit): <span class="font-bold text-2xl text-blue-600">$8,000 - $15,000</span> per drone unit (3-year LTV)</p>
+                    <p class="text-xl text-gray-600">Target ARPU (Average Revenue Per Unit): <span class="font-bold text-2xl text-blue-600">₹6,60,000 - ₹12,00,000</span> (approx. 3-year LTV)</p>
                 </div>
             </div>
         </section>
 
-        <!-- The Ask & Exit Strategy Section (UPDATED) -->
+        <!-- The Ask & Exit Strategy Section (UPDATED FOR LEAN SEED) -->
         <section id="ask" class="py-20 bg-white">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">The Ask & Exit Strategy</h2>
-                       <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">We are seeking seed funding to finalize development, capture key pilot contracts, and scale operations.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">The Ask & Long-Term Vision</h2>
+                       <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">We are seeking lean seed funding to finalize core software development, secure our first pilot projects, and establish IP.</p>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
                     <!-- Funding Details -->
                     <div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Seeking <span class="text-blue-600">$1.5 Million</span> Seed Round</h3>
-                        <p class="lg:text-lg text-gray-600 mb-6">On an **$8 Million Pre-Money Valuation** to provide an 18-month runway for key growth milestones.</p>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Seeking <span class="text-blue-600">₹60 Lakhs</span> Seed Round</h3>
+                        <p class="lg:text-lg text-gray-600 mb-2">Equivalent to approx. \$72,000 USD, this seed funding is based on a conservative **₹350 Lakhs Pre-Money Valuation**.</p>
+                        <p class="lg:text-lg text-gray-600 mb-6">This investment secures a **17.1% equity stake** and provides a 12-month runway focused entirely on software completion and client validation.</p>
                         
                         <!-- Call to Action Button for the Modal -->
                         <button onclick="openFormModal()" class="w-full lg:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-xl">
                             Schedule a Technical Demo
                         </button>
 
-                        <h4 class="text-xl font-semibold text-gray-800 mt-8">Exit Strategy</h4>
-                        <p class="mt-2 text-gray-600">High-multiple acquisition within 5 years by a major defense contractor (e.g., Lockheed Martin, Boeing) or a large industrial automation firm (e.g., Siemens, Honeywell) seeking to own the critical layer of autonomous drone systems.</p>
+                        <h4 class="text-xl font-semibold text-gray-800 mt-8">Long-Term Vision (Exit Strategy)</h4>
+                        <p class="mt-2 text-gray-600">We are building a **category-defining platform** with a long-term goal of market dominance, focusing on capturing majority market share in DAS middleware. The strategy is centered on sustained revenue growth, profitability, and an **eventual public offering (IPO)** or secondary market investment round.</p>
                     </div>
                     <!-- Use of Funds Chart -->
                     <div>
-                        <h3 class="text-2xl font-semibold text-center mb-4">Use of Funds</h3>
+                        <h3 class="text-2xl font-semibold text-center mb-4">Use of Funds (₹60 Lakhs Allocation)</h3>
                         <div class="chart-container">
                             <canvas id="fundsChart"></canvas>
                         </div>
@@ -536,15 +537,15 @@
                 });
             }
 
-            // 3. Use of Funds Donut Chart
+            // 3. Use of Funds Donut Chart (UPDATED FOR LEAN ₹60 LAKHS)
             const fundsChartCtx = document.getElementById('fundsChart')?.getContext('2d');
             if (fundsChartCtx) {
                 new Chart(fundsChartCtx, {
                     type: 'doughnut',
                     data: {
-                        labels: ['Go-To-Market (45%)', 'R&D Finalization (35%)', 'Operational Overhead (20%)'],
+                        labels: ['Core Software Dev & IP Protection (50%)', 'Pilot Projects & Validation (30%)', 'Lean Operational Overhead (20%)'],
                         datasets: [{
-                            data: [45, 35, 20],
+                            data: [50, 30, 20],
                             backgroundColor: [
                                 'rgba(59, 130, 246, 0.7)',
                                 'rgba(16, 185, 129, 0.7)',
