@@ -43,6 +43,68 @@
             background-color: #3b82f6 !important;
             color: #ffffff !important;
         }
+
+        /* Modal specific styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.7); /* Dark semi-transparent background */
+            backdrop-filter: blur(4px);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; /* 5% from the top and centered */
+            padding: 20px;
+            border-radius: 12px;
+            width: 90%; 
+            max-width: 700px; /* Adjust as needed */
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+        .close-btn:hover,
+        .close-btn:focus {
+            color: #3b82f6;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Responsive iframe container - crucial for embedding forms */
+        .iframe-container {
+            position: relative;
+            overflow: hidden;
+            /* Give it a large height to fit the long form content, adjustable based on form length */
+            padding-top: 1500px; 
+        }
+
+        @media (min-width: 640px) {
+            .iframe-container {
+                padding-top: 1000px; 
+            }
+        }
+
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -248,7 +310,12 @@
                         <h3 class="text-2xl font-bold text-gray-800 mb-2">Seeking <span class="text-blue-600">$1.5 Million</span> Seed Round</h3>
                         <p class="lg:text-lg text-gray-600 mb-6">To provide an 18-month runway for key growth milestones.</p>
                         
-                        <h4 class="text-xl font-semibold text-gray-800">Exit Strategy</h4>
+                        <!-- Call to Action Button for the Modal -->
+                        <button onclick="openFormModal()" class="w-full lg:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-xl">
+                            Schedule a Technical Demo
+                        </button>
+
+                        <h4 class="text-xl font-semibold text-gray-800 mt-8">Exit Strategy</h4>
                         <p class="mt-2 text-gray-600">High-multiple acquisition within 5 years by a major defense contractor (e.g., Lockheed Martin, Boeing) or a large industrial automation firm (e.g., Siemens, Honeywell) seeking to own the critical layer of autonomous drone systems.</p>
                     </div>
                     <!-- Use of Funds Chart -->
@@ -263,43 +330,81 @@
         </section>
     </main>
 
-    <!-- Footer with Call to Action and Contact Info -->
+    <!-- Modal for Embedded Google Form -->
+    <div id="formModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeFormModal()">&times;</span>
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Schedule a Technical Demo</h2>
+            
+            <div class="iframe-container">
+                <!-- 
+                    The Google Form is embedded here using your provided link, with '?embedded=true' appended
+                    to ensure it renders properly inside the iframe.
+                -->
+                <iframe 
+                    src="https://docs.google.com/forms/d/e/1FAIpQLScV-hW3_Kq_yGzcfkTjFmF8KHX00xMWTMd4bLUbnYxs0NP8Vw/viewform?embedded=true" 
+                    frameborder="0" 
+                    marginheight="0" 
+                    marginwidth="0"
+                    loading="lazy">Loading...</iframe>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer with Contact Info -->
     <footer class="bg-gray-800 text-white">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
             <h2 class="text-3xl font-bold">Invest in the Future of Autonomous Coordination.</h2>
             <p class="mt-4 max-w-2xl mx-auto text-gray-300">SDAS is not just drone software; it is the fundamental networking layer that enables true, resilient autonomy.</p>
-            <div class="mt-8">
-                <!-- Google Forms Link Updated with the new URL and target="_blank" to ensure it works on GitHub Pages -->
-                <a href="https://forms.gle/Q2uCR3hbw4kCyXPP7" target="_blank" rel="noopener noreferrer" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300">Schedule a Technical Demo</a>
-            </div>
-            <!-- Updated Contact Info -->
+            <!-- Removed the large button from the footer and moved it to the Ask section (#ask) -->
             <p class="mt-8 text-gray-400">Jeevesh | +91 9940344764 | Aaruran Software Solutions</p>
         </div>
     </footer>
 
     <script>
+        // --- Modal Functions ---
+        const modal = document.getElementById('formModal');
+
+        // Function to open the modal
+        function openFormModal() {
+            modal.style.display = "block";
+        }
+
+        // Function to close the modal
+        function closeFormModal() {
+            modal.style.display = "none";
+        }
+
+        // Close modal when user clicks anywhere outside of the modal
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeFormModal();
+            }
+        }
+
+
+        // --- Tech Tab Data ---
+        const techData = {
+            comm: {
+                legacy: `<strong>Communication Lock-In:</strong> Swarms are tethered to a single method (Wi-Fi, radio) and cannot dynamically switch. This creates a single point of failure that is easily jammed or compromised.`,
+                sdas: `<strong>Protocol-Agnostic Modem:</strong> Our middleware abstracts the physical radio link (<strong>Cellular Network</strong>, Radio, Mesh) from swarm logic, allowing hardware flexibility and future-proofing the system.`
+            },
+            net: {
+                legacy: `<strong>Rigid Command & Control:</strong> Systems rely on centralized command, creating a devastating choke point. Unable to handle on-the-fly mission changes or loss of a commander drone.`,
+                sdas: `<strong>True Peer-to-Peer Mesh:</strong> A resilient, self-healing network where every drone is a node. This eliminates the single point of failure and ensures mission continuity in contested environments.`
+            },
+            auto: {
+                legacy: `<strong>Operator Overload:</strong> Swarm mission success is currently bottlenecked by the human operator, who must micromanage complex, low-level positional decisions (e.g., altitude, separation) for dozens of units.`,
+                sdas: `<strong>Decentralized Intelligence:</strong> Each unit runs the SDAS middleware, allowing it to interpret high-level operator goals and make all necessary tactical, positional, and comms decisions autonomously on the edge.`
+            },
+            sec: {
+                legacy: `<strong>Standard Commercial Encryption:</strong> Vulnerable to sophisticated state-level actors and electronic warfare tactics. Not suitable for mission-critical operations.`,
+                sdas: `<strong>Military-Grade Security:</strong> All networks are secured end-to-end with post-quantum encryption standards, providing an end-to-end proprietary security layer.`
+            }
+        };
+
         document.addEventListener('DOMContentLoaded', () => {
-
-            // --- Tech Tab Data ---
-            const techData = {
-                comm: {
-                    legacy: `<strong>Communication Lock-In:</strong> Swarms are tethered to a single method (Wi-Fi, radio) and cannot dynamically switch. This creates a single point of failure that is easily jammed or compromised.`,
-                    sdas: `<strong>Protocol-Agnostic Modem:</strong> Our middleware abstracts the physical radio link (<strong>Cellular Network</strong>, Radio, Mesh) from swarm logic, allowing hardware flexibility and future-proofing the system.`
-                },
-                net: {
-                    legacy: `<strong>Rigid Command & Control:</strong> Systems rely on centralized command, creating a devastating choke point. Unable to handle on-the-fly mission changes or loss of a commander drone.`,
-                    sdas: `<strong>True Peer-to-Peer Mesh:</strong> A resilient, self-healing network where every drone is a node. This eliminates the single point of failure and ensures mission continuity in contested environments.`
-                },
-                auto: {
-                    legacy: `<strong>Operator Overload:</strong> Swarm mission success is currently bottlenecked by the human operator, who must micromanage complex, low-level positional decisions (e.g., altitude, separation) for dozens of units.`,
-                    sdas: `<strong>Decentralized Intelligence:</strong> Each unit runs the SDAS middleware, allowing it to interpret high-level operator goals and make all necessary tactical, positional, and comms decisions autonomously on the edge.`
-                },
-                sec: {
-                    legacy: `<strong>Standard Commercial Encryption:</strong> Vulnerable to sophisticated state-level actors and electronic warfare tactics. Not suitable for mission-critical operations.`,
-                    sdas: `<strong>Military-Grade Security:</strong> All networks are secured end-to-end with post-quantum encryption standards, providing an end-to-end proprietary security layer.`
-                }
-            };
-
             const legacyContent = document.getElementById('legacy-content');
             const sdasContent = document.getElementById('sdas-content');
             const tabs = document.querySelectorAll('.tech-tab');
