@@ -16,6 +16,7 @@
             background-color: #f8fafc;
             color: #1f2937;
         }
+        /* Custom styling for chart containers */
         .chart-container {
             position: relative;
             width: 100%;
@@ -30,12 +31,14 @@
                 height: 350px;
             }
         }
+        /* Navigation link hover effect */
         .nav-link {
             transition: color 0.3s ease;
         }
         .nav-link:hover {
             color: #3b82f6;
         }
+        /* Active tab styling for the technology comparison section */
         .active-tab {
             background-color: #3b82f6 !important;
             color: #ffffff !important;
@@ -56,15 +59,18 @@
                     <a href="#model" class="nav-link text-gray-600 font-medium">Business Model</a>
                     <a href="#ask" class="nav-link text-gray-600 font-medium">The Ask</a>
                 </div>
+                <!-- Mobile menu button can be added here -->
             </div>
         </nav>
     </header>
 
     <main>
+        <!-- Hero Section -->
         <section id="hero" class="py-20 md:py-28 bg-white">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight">SDAS: The Platform for Autonomous Swarm Intelligence.</h1>
                 <p class="mt-4 max-w-3xl mx-auto text-lg md:text-xl text-gray-600">Decentralized Middleware for Secure, AI-Driven Drone Operations.</p>
+                <!-- Key Pain Point Statistic -->
                 <div class="mt-12 inline-block bg-rose-50 border border-rose-200 rounded-xl p-6 shadow-lg">
                     <p class="text-xl text-rose-700">The Pain Point</p>
                     <p class="text-6xl font-bold text-rose-600">92%</p>
@@ -73,6 +79,7 @@
             </div>
         </section>
 
+        <!-- Problem & Solution Section (Interactive Tabs) -->
         <section id="problem" class="py-20">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
@@ -81,6 +88,7 @@
                 </div>
 
                 <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-4 sm:p-6">
+                    <!-- Interactive Tab Buttons -->
                     <div class="flex flex-col sm:flex-row justify-center mb-6 bg-gray-100 rounded-lg p-1.5">
                         <button id="tab-comm" class="tech-tab flex-1 py-2 px-4 text-sm font-semibold rounded-md transition-colors duration-300">Communication</button>
                         <button id="tab-net" class="tech-tab flex-1 py-2 px-4 text-sm font-semibold rounded-md transition-colors duration-300">Network</button>
@@ -88,6 +96,7 @@
                         <button id="tab-sec" class="tech-tab flex-1 py-2 px-4 text-sm font-semibold rounded-md transition-colors duration-300">Security</button>
                     </div>
 
+                    <!-- Content Comparison Area -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="border border-gray-200 rounded-lg p-6">
                             <h3 class="text-lg font-semibold text-gray-500">Legacy Systems (The Bottleneck)</h3>
@@ -102,8 +111,9 @@
             </div>
         </section>
 
+        <!-- Technology & IP Section -->
         <section id="technology" class="py-20 bg-white">
-             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+               <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-900">The Secret Sauce: Decentralized Modem Architecture</h2>
                     <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">Our advantage lies in our proprietary flight computer and a middleware layer that abstracts communication, enabling unprecedented flexibility and intelligence for AI model deployment.</p>
@@ -125,6 +135,7 @@
             </div>
         </section>
 
+        <!-- Market and TAM/SAM/SOM Section -->
         <section id="market" class="py-20">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
@@ -132,16 +143,18 @@
                     <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">We target the high-growth 'Decentralized Autonomous Systems (DAS) Middleware' segment, positioning us for high-multiple growth in the platform layer.</p>
                 </div>
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <!-- TAM vs SAM Chart -->
                     <div>
                         <h3 class="text-2xl font-semibold text-center mb-4">Market Segmentation: TAM vs. SAM</h3>
                         <div class="chart-container">
                             <canvas id="marketChart"></canvas>
                         </div>
                         <div class="text-center mt-6 text-gray-700">
-                             <p class="font-bold">TAM (Total Addressable Market):</p> The entire global Commercial and Military Drone ecosystem ($150 Billion).
-                             <p class="font-bold mt-2">SAM (Serviceable Addressable Market):</p> The specific segment addressable by autonomous swarm middleware ($4.5 Billion).
+                               <p class="font-bold">TAM (Total Addressable Market):</p> The entire global Commercial and Military Drone ecosystem ($150 Billion).
+                               <p class="font-bold mt-2">SAM (Serviceable Addressable Market):</p> The specific segment addressable by autonomous swarm middleware ($4.5 Billion).
                         </div>
                     </div>
+                    <!-- SOM Chart -->
                     <div>
                         <h3 class="text-2xl font-semibold text-center mb-4">Initial SOM (Serviceable Obtainable Market) Goal: \$150M</h3>
                         <div class="chart-container">
@@ -155,6 +168,7 @@
             </div>
         </section>
         
+        <!-- Applications Section (Interactive Cards) -->
         <section id="applications" class="py-20 bg-white">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
@@ -162,6 +176,7 @@
                     <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">SDAS enables missions previously impossible, from high-stakes national security to autonomous commercial logistics. Click each sector to see the value creation.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Application Card 1 -->
                     <div class="app-card cursor-pointer bg-gray-50 p-6 rounded-lg border hover:shadow-lg transition-shadow">
                         <h3 class="text-xl font-semibold text-gray-800">Advanced ISR & Reconnaissance</h3>
                         <p class="mt-2 text-gray-600">Deploy large drone armies for coordinated offensives, defensive screening, and suppressing enemy air defenses.</p>
@@ -170,34 +185,37 @@
                            <p class="text-gray-600">Enables complex tactics like decoys, flanking, and simultaneous coordinated attacks without risking pilots. <strong>Defense & Security Sector</strong>.</p>
                         </div>
                     </div>
+                    <!-- Application Card 2 -->
                     <div class="app-card cursor-pointer bg-gray-50 p-6 rounded-lg border hover:shadow-lg transition-shadow">
                         <h3 class="text-xl font-semibold text-gray-800">Autonomous Infrastructure Monitoring</h3>
                         <p class="mt-2 text-gray-600">Autonomous swarms monitor vast solar panel arrays for micro-cracks, hotspots, and intrusion.</p>
-                         <div class="app-details hidden mt-4 pt-4 border-t border-gray-200">
-                           <p class="font-semibold text-blue-600">Value Creation: Efficiency</p>
-                           <p class="text-gray-600">Covers 10x the ground of traditional methods with 99% data integrity due to mesh communication resilience. <strong>Critical Infrastructure Sector</strong>.</p>
+                           <div class="app-details hidden mt-4 pt-4 border-t border-gray-200">
+                            <p class="font-semibold text-blue-600">Value Creation: Efficiency</p>
+                            <p class="text-gray-600">Covers 10x the ground of traditional methods with 99% data integrity due to mesh communication resilience. <strong>Critical Infrastructure Sector</strong>.</p>
                         </div>
                     </div>
+                    <!-- Application Card 3 -->
                     <div class="app-card cursor-pointer bg-gray-50 p-6 rounded-lg border hover:shadow-lg transition-shadow">
                         <h3 class="text-xl font-semibold text-gray-800">AI Model Deployment & Testing</h3>
                         <p class="mt-2 text-gray-600">Rapidly deploy and test new AI models (e.g., computer vision, pathfinding) across a fleet using our decentralized data pipeline.</p>
-                         <div class="app-details hidden mt-4 pt-4 border-t border-gray-200">
-                           <p class="font-semibold text-blue-600">Value Creation: Speed & Iteration</p>
-                           <p class="text-600">Reduces development cycles by providing a robust, decentralized OS layer for all AI-driven drone innovation. <strong>Niche AI Platforms Sector</strong>.</p>
+                           <div class="app-details hidden mt-4 pt-4 border-t border-gray-200">
+                            <p class="font-semibold text-blue-600">Value Creation: Speed & Iteration</p>
+                            <p class="text-gray-600">Reduces development cycles by providing a robust, decentralized OS layer for all AI-driven drone innovation. <strong>Niche AI Platforms Sector</strong>.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Business Model Section -->
         <section id="model" class="py-20">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                 <div class="text-center mb-12">
+                   <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-900">High-Margin, Recurring Revenue</h2>
                     <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">Our business model is designed for rapid adoption and long-term, scalable revenue streams.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto text-center">
-                     <div class="bg-white rounded-xl p-8 border shadow-sm">
+                    <div class="bg-white rounded-xl p-8 border shadow-sm">
                         <h3 class="text-2xl font-semibold text-gray-800">Hardware & Licensing</h3>
                         <p class="mt-4 text-gray-600">Initial revenue from sales of our proprietary flight computer (edge device for AI) and perpetual middleware licenses.</p>
                     </div>
@@ -216,21 +234,24 @@
             </div>
         </section>
 
+        <!-- The Ask & Exit Strategy Section -->
         <section id="ask" class="py-20 bg-white">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-900">The Ask & Exit Strategy</h2>
-                     <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">We are seeking seed funding to finalize development, capture key pilot contracts, and scale operations.</p>
+                       <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">We are seeking seed funding to finalize development, capture key pilot contracts, and scale operations.</p>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+                    <!-- Funding Details -->
                     <div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Seeking <span class="text-blue-600">$[X] Million</span> Seed Round</h3>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Seeking <span class="text-blue-600">$1.5 Million</span> Seed Round</h3>
                         <p class="lg:text-lg text-gray-600 mb-6">To provide an 18-month runway for key growth milestones.</p>
                         
                         <h4 class="text-xl font-semibold text-gray-800">Exit Strategy</h4>
                         <p class="mt-2 text-gray-600">High-multiple acquisition within 5 years by a major defense contractor (e.g., Lockheed Martin, Boeing) or a large industrial automation firm (e.g., Siemens, Honeywell) seeking to own the critical layer of autonomous drone systems.</p>
                     </div>
+                    <!-- Use of Funds Chart -->
                     <div>
                         <h3 class="text-2xl font-semibold text-center mb-4">Use of Funds</h3>
                         <div class="chart-container">
@@ -242,20 +263,24 @@
         </section>
     </main>
 
+    <!-- Footer with Call to Action and Contact Info -->
     <footer class="bg-gray-800 text-white">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
             <h2 class="text-3xl font-bold">Invest in the Future of Autonomous Coordination.</h2>
             <p class="mt-4 max-w-2xl mx-auto text-gray-300">SDAS is not just drone software; it is the fundamental networking layer that enables true, resilient autonomy.</p>
             <div class="mt-8">
-                <a href="https://docs.google.com/forms/d/e/YOUR_DEMO_FORM_LINK/viewform" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300">Schedule a Technical Demo</a>
+                <!-- Google Forms Link Added -->
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScV-hW3_Kq_yGzcfkTjFmF8KHX00xMWTMd4bLUbnYxs0NP8Vw/viewform?usp=header" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300">Schedule a Technical Demo</a>
             </div>
-            <p class="mt-8 text-gray-400">[Your Name] | [Your Email/Phone] | [Your Website]</p>
+            <!-- Updated Contact Info -->
+            <p class="mt-8 text-gray-400">Jeevesh | +91 9940344764 | Aaruran Software Solutions</p>
         </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
+            // --- Tech Tab Data ---
             const techData = {
                 comm: {
                     legacy: `<strong>Communication Lock-In:</strong> Swarms are tethered to a single method (Wi-Fi, radio) and cannot dynamically switch. This creates a single point of failure that is easily jammed or compromised.`,
@@ -280,8 +305,11 @@
             const tabs = document.querySelectorAll('.tech-tab');
 
             function updateTechContent(techKey) {
+                // Update text content
                 legacyContent.innerHTML = techData[techKey].legacy;
                 sdasContent.innerHTML = techData[techKey].sdas;
+                
+                // Update tab styles
                 tabs.forEach(tab => {
                     tab.classList.remove('active-tab', 'bg-blue-600', 'text-white');
                     tab.classList.add('bg-gray-100', 'text-gray-700');
@@ -292,6 +320,7 @@
                 });
             }
 
+            // Set up click listeners for tech tabs
             tabs.forEach(tab => {
                 tab.addEventListener('click', (e) => {
                     const techKey = e.target.id.split('-')[1];
@@ -299,8 +328,10 @@
                 });
             });
 
+            // Initialize with the first tab content
             updateTechContent('comm');
 
+            // --- Application Card Interactivity ---
             const appCards = document.querySelectorAll('.app-card');
             appCards.forEach(card => {
                 card.addEventListener('click', () => {
@@ -309,9 +340,11 @@
                 });
             });
 
+            // --- Chart.js Configuration ---
             Chart.defaults.font.family = "'Inter', sans-serif";
             Chart.defaults.font.weight = '500';
 
+            // 1. TAM vs SAM Bar Chart
             const marketChartCtx = document.getElementById('marketChart')?.getContext('2d');
             if (marketChartCtx) {
                 new Chart(marketChartCtx, {
@@ -319,20 +352,20 @@
                     data: {
                         labels: ['Global Drone Ecosystem (TAM)', 'DAS Middleware (SAM)'],
                         datasets: [
-                         {
-                            label: 'Total Addressable Market (TAM)',
-                            data: [150], // $150 Billion
-                            backgroundColor: 'rgba(156, 163, 175, 0.6)',
-                            borderColor: 'rgba(156, 163, 175, 1)',
-                            borderWidth: 1
-                        },
-                         {
-                            label: 'Serviceable Addressable Market (SAM)',
-                            data: [0, 4.5], // $4.5 Billion
-                            backgroundColor: 'rgba(59, 130, 246, 0.6)',
-                            borderColor: 'rgba(59, 130, 246, 1)',
-                            borderWidth: 1
-                        }]
+                           {
+                             label: 'Total Addressable Market (TAM)',
+                             data: [150], // $150 Billion
+                             backgroundColor: 'rgba(156, 163, 175, 0.6)',
+                             borderColor: 'rgba(156, 163, 175, 1)',
+                             borderWidth: 1
+                           },
+                           {
+                             label: 'Serviceable Addressable Market (SAM)',
+                             data: [0, 4.5], // $4.5 Billion
+                             backgroundColor: 'rgba(59, 130, 246, 0.6)',
+                             borderColor: 'rgba(59, 130, 246, 1)',
+                             borderWidth: 1
+                           }]
                     },
                     options: {
                         responsive: true,
@@ -357,13 +390,14 @@
                                 }
                             },
                              y: {
-                                stacked: true // Ensure bars don't overlap if we decide to change the data structure later
+                                stacked: true 
                             }
                         }
                     }
                 });
             }
 
+            // 2. SOM Donut Chart (Initial Target)
             const samChartCtx = document.getElementById('samChart')?.getContext('2d');
             if (samChartCtx) {
                 new Chart(samChartCtx, {
@@ -397,6 +431,7 @@
                 });
             }
 
+            // 3. Use of Funds Donut Chart
             const fundsChartCtx = document.getElementById('fundsChart')?.getContext('2d');
             if (fundsChartCtx) {
                 new Chart(fundsChartCtx, {
