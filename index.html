@@ -141,7 +141,7 @@
             #################################################################
         -->
         <img 
-            src="intro.png" 
+            src="intro.jpg" 
             alt="SDAS Introductory Visual" 
             class="w-full h-full object-cover" 
             onerror="this.style.display='none'; this.parentElement.classList.add('bg-gray-900', 'flex', 'justify-center', 'items-center'); this.parentElement.innerHTML='<p class=\'text-white text-3xl font-bold\'>SDAS Pitch Deck</p>'" 
@@ -234,18 +234,18 @@
                             <canvas id="marketChart"></canvas>
                         </div>
                         <div class="text-center mt-6 text-gray-700">
-                               <p class="font-bold">TAM (Total Addressable Market):</p> The entire global Drone ecosystem (<strong>$7.09 Billion</strong>).
-                               <p class="font-bold mt-2">SAM (Serviceable Addressable Market):</p> The specific segment addressable by autonomous swarm middleware (<strong>$1.06 Billion</strong>).
+                               <p class="font-bold">TAM (Total Addressable Market):</p> The estimated total value of core drone service sub-segments globally (Inspection, Surveying, Digital Twins) that require high-fidelity data acquisition (<strong>$34 Billion</strong>). The equivalent market in India is approximately <strong>$1.3 Billion</strong>.
+                               <p class="font-bold mt-2">SAM (Serviceable Addressable Market):</p> The portion of the Global TAM addressable by a *swarm control platform* solution like SDAS (<strong>$13.8 Billion</strong>). The Indian SAM is estimated at <strong>$500 Million</strong>.
                         </div>
                     </div>
                     <!-- SOM Chart -->
                     <div>
-                        <h3 class="text-2xl font-semibold text-center mb-4">Initial <strong>SOM</strong> (Serviceable Obtainable Market) Goal: <strong>$53M</strong></h3>
+                        <h3 class="text-2xl font-semibold text-center mb-4">Initial <strong>SOM</strong> (Serviceable Obtainable Market) Goal: <strong>$690M</strong></h3>
                         <div class="chart-container">
                             <canvas id="samChart"></canvas>
                         </div>
                         <div class="text-center mt-6 text-gray-700">
-                            <p class="font-bold">SOM (Serviceable Obtainable Market):</p> The realistic market share we aim to capture within 3 years, focused on high-value pilot programs (<strong>$53 Million</strong>).
+                            <p class="font-bold">SOM (Serviceable Obtainable Market):</p> The realistic global market share we aim to capture within 3 years, focused on high-value pilot programs (<strong>$690 Million</strong>). Our focused Indian SOM target is <strong>$26 Million</strong>.
                         </div>
                     </div>
                 </div>
@@ -263,10 +263,10 @@
                     <!-- Application Card 1 -->
                     <div class="app-card cursor-pointer bg-gray-50 p-6 rounded-lg border hover:shadow-lg transition-shadow">
                         <h3 class="text-xl font-semibold text-gray-800">Persistent Intelligence & Reconnaissance (PIR)</h3>
-                        <p class="mt-2 text-gray-600">Deploying <strong>mobile sensor units</strong> for <strong>continuous, wide-area data acquisition</strong> in vast or contested areas, creating real-time operational pictures for defense and security.</p>
+                        <p class="mt-2 text-gray-600">Deploying <strong>mobile sensor units</strong> for <strong>continuous, wide-area data acquisition</strong> in vast or contested areas, creating real-time operational pictures for surveilance and security.</p>
                         <div class="app-details hidden mt-4 pt-4 border-t border-gray-200">
                            <p class="font-semibold text-blue-600">Value Creation: Data Density</p>
-                           <p class="text-gray-600">Delivers superior area coverage and data continuity compared to single-unit surveillance. <strong>Defense & Security Sector</strong>.</p>
+                           <p class="text-gray-600">Delivers superior area coverage and data continuity compared to single-unit surveillance. <strong>Surveilance & Security Sector</strong>.</p>
                         </div>
                     </div>
                     <!-- Application Card 2 -->
@@ -374,7 +374,7 @@
             <h2 class="text-3xl font-bold">Invest in the Future of Autonomous Coordination.</h2>
             <p class="mt-4 max-w-2xl mx-auto text-gray-300">SDAS is not just drone software; it is the <strong>fundamental networking layer</strong> that enables true, resilient autonomy across any compatible platform.</p>
             <p class="mt-8 text-gray-400">Jeevesh | +91 9940344764 | Aaruran Software Solutions</p>
-            <p class="mt-8 text-gray-400">Haridutt | +91 996651680 | Aaruran Software Solutions</p>
+            <p class="mt-8 text-gray-400">Haridutt| +91 9966514680 | Aaruran Software Solutions</p>
         </div>
     </footer>
 
@@ -466,24 +466,29 @@
              Chart.defaults.font.family = "'Inter', sans-serif";
              Chart.defaults.font.weight = '500';
 
+             // --- NEW MARKET DATA ---
+             const newGlobalTAM = 34; // $34 Billion
+             const newGlobalSAM = 13.8; // $13.8 Billion
+             const newGlobalSOM = 690; // $690 Million (Used in M, will display as $M)
+             
              // 1. TAM vs SAM Bar Chart
              const marketChartCtx = document.getElementById('marketChart')?.getContext('2d');
              if (marketChartCtx) {
                  new Chart(marketChartCtx, {
                      type: 'bar',
                      data: {
-                         labels: ['Global Drone Ecosystem (TAM)', 'DAS Middleware (SAM)'],
+                         labels: ['Total Addressable Market (TAM)', 'Serviceable Addressable Market (SAM)'],
                          datasets: [
                             {
                               label: 'Total Addressable Market (TAM)',
-                              data: [7.09], // Updated from 150
+                              data: [newGlobalTAM], 
                               backgroundColor: 'rgba(156, 163, 175, 0.6)',
                               borderColor: 'rgba(156, 163, 175, 1)',
                               borderWidth: 1
                             },
                             {
                               label: 'Serviceable Addressable Market (SAM)',
-                              data: [0, 1.06], // Updated from 0, 4.5
+                              data: [0, newGlobalSAM], 
                               backgroundColor: 'rgba(59, 130, 246, 0.6)',
                               borderColor: 'rgba(59, 130, 246, 1)',
                               borderWidth: 1
@@ -498,6 +503,7 @@
                              tooltip: {
                                  callbacks: {
                                      label: function(context) {
+                                         // Show TAM in $B and SAM in $B
                                          return `${context.dataset.label}: $${context.raw}B`;
                                      }
                                  }
@@ -519,20 +525,23 @@
                  });
              }
 
-             // 2. SOM Donut Chart (Initial Target - Total $53M)
-             const som_pir = 31.8; // 60% of 53M
-             const som_dai = 15.9; // 30% of 53M
-             const som_hfdt = 5.3;  // 10% of 53M
+             // 2. SOM Donut Chart (Initial Target - Total $690M)
+             // Proportions maintained: PIR (60%), DAI (30%), HFDT (10%)
+             const som_pir = newGlobalSOM * 0.6; // 414M
+             const som_dai = newGlobalSOM * 0.3; // 207M
+             const som_hfdt = newGlobalSOM * 0.1;  // 69M
              
              const samChartCtx = document.getElementById('samChart')?.getContext('2d');
              if (samChartCtx) {
                  new Chart(samChartCtx, {
                      type: 'doughnut',
                      data: {
-                         // Updated labels to reflect new million dollar values
-                         labels: [`Defense & Security ($${som_pir}M)`, `Critical Infrastructure ($${som_dai}M)`, `Niche AI Platforms ($${som_hfdt}M)`],
+                         labels: [
+                            `Defense & Security ($${som_pir.toFixed(0)}M)`, // PIR: Persistent Intelligence & Reconnaissance
+                            `Critical Infrastructure ($${som_dai.toFixed(0)}M)`, // DAI: Digital Asset Integrity
+                            `Niche AI Platforms ($${som_hfdt.toFixed(0)}M)` // HFDT: High-Fidelity Digital Twins
+                        ],
                          datasets: [{
-                             // Updated data values, maintaining original proportions (60/30/10) of $53M
                              data: [som_pir, som_dai, som_hfdt], 
                              backgroundColor: ['rgba(59, 130, 246, 0.7)', 'rgba(16, 185, 129, 0.7)', 'rgba(245, 158, 11, 0.7)'],
                              borderColor: ['#ffffff'],
