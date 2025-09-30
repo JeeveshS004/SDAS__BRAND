@@ -44,29 +44,10 @@
             color: #ffffff !important;
         }
 
-        /* --- INTRO SCREEN STYLES (Black space that fades out) --- */
-        #intro-screen {
-            position: fixed; 
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh; 
-            z-index: 9999; /* High Z-index to cover content */
-            background-color: #000000; /* Solid Black Background */
-            opacity: 1;
-            transition: opacity 1.5s ease-out; /* Smooth fade transition */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            /* Flex layout helps center the image/content */
-        }
-        
-        /* New Image Styling to ensure the picture fills the space and scales correctly */
-        #intro-screen img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Ensures the image covers the entire screen without distortion (like background-size: cover) */
-            opacity: 1; /* Image is fully visible before the whole screen fades */
+        /* --- IMAGE BANNER STYLES --- */
+        #image-banner img {
+            /* w-full and h-full are set in Tailwind classes on the image tag */
+            object-fit: cover; /* Ensures the image covers the entire banner area without distortion */
         }
 
         /* Modal specific styles */
@@ -83,7 +64,7 @@
             backdrop-filter: blur(4px);
         }
         .modal-content {
-            background-color: #fefefe;
+            background-color: #fefefs;
             margin: 5% auto; 
             padding: 20px;
             border-radius: 12px;
@@ -150,18 +131,22 @@
         </nav>
     </header>
     
-    <!-- Intro Screen Section (Black space that fades out) -->
-    <div id="intro-screen">
+    <!-- Image Banner Section (Static and fully visible) -->
+    <section id="image-banner" class="w-full h-[400px] overflow-hidden">
         <!-- 
             #################################################################
             # THIS IS YOUR IMAGE PLACEHOLDER: 
-            # 1. Replace "placeholder.jpg" with your actual image file name or URL.
-            # 2. The custom CSS above ensures this image fills the screen and fades out 
-            #    with the black screen overlay.
+            # Replace "placeholder.jpg" with your actual image file name or URL.
+            # The image will fill this 400px tall section.
             #################################################################
         -->
-        <img src="intro.png" alt="SDAS Introductory Visual" onerror="this.style.display='none'; this.parentElement.style.backgroundColor='#000000';" />
-    </div>
+        <img 
+            src="intro.png" 
+            alt="SDAS Introductory Visual" 
+            class="w-full h-full object-cover" 
+            onerror="this.style.display='none'; this.parentElement.classList.add('bg-gray-900', 'flex', 'justify-center', 'items-center'); this.parentElement.innerHTML='<p class=\'text-white text-3xl font-bold\'>SDAS Pitch Deck</p>'" 
+        />
+    </section>
     
     <main id="main-content">
         <!-- Hero Section (Static content moved down to be visible after intro) -->
@@ -389,6 +374,7 @@
             <h2 class="text-3xl font-bold">Invest in the Future of Autonomous Coordination.</h2>
             <p class="mt-4 max-w-2xl mx-auto text-gray-300">SDAS is not just drone software; it is the <strong>fundamental networking layer</strong> that enables true, resilient autonomy across any compatible platform.</p>
             <p class="mt-8 text-gray-400">Jeevesh | +91 9940344764 | Aaruran Software Solutions</p>
+            <p class="mt-8 text-gray-400">Haridutt | +91 9966514680 | Aaruran Software Solutions</p>
         </div>
     </footer>
 
@@ -604,25 +590,9 @@
              }
         }
 
-
-        // Initialize the page elements and handle intro screen fade
+        // Initialize the page elements when the window loads
         window.onload = function () {
             initializePageElements();
-            
-            // --- Intro Screen Fade Out Logic ---
-            const introScreen = document.getElementById('intro-screen');
-            if (introScreen) {
-                // Wait 500ms before starting the fade (allows time for an embedded image to load)
-                setTimeout(() => {
-                    // Start the CSS opacity transition (1.5s duration defined in CSS)
-                    introScreen.style.opacity = '0'; 
-                }, 500); 
-
-                // After the transition completes (1.5s) + initial delay (0.5s), hide the element completely
-                setTimeout(() => {
-                    introScreen.style.display = 'none'; 
-                }, 2000); 
-            }
         }
     </script>
 </body>
