@@ -44,6 +44,31 @@
             color: #ffffff !important;
         }
 
+        /* --- INTRO SCREEN STYLES (Black space that fades out) --- */
+        #intro-screen {
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh; 
+            z-index: 9999; /* High Z-index to cover content */
+            background-color: #000000; /* Solid Black Background */
+            opacity: 1;
+            transition: opacity 1.5s ease-out; /* Smooth fade transition */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Flex layout helps center the image/content */
+        }
+        
+        /* New Image Styling to ensure the picture fills the space and scales correctly */
+        #intro-screen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the image covers the entire screen without distortion (like background-size: cover) */
+            opacity: 1; /* Image is fully visible before the whole screen fades */
+        }
+
         /* Modal specific styles */
         .modal {
             display: none;
@@ -54,16 +79,16 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0,0,0,0.7); /* Dark semi-transparent background */
+            background-color: rgba(0,0,0,0.7); 
             backdrop-filter: blur(4px);
         }
         .modal-content {
             background-color: #fefefe;
-            margin: 5% auto; /* 5% from the top and centered */
+            margin: 5% auto; 
             padding: 20px;
             border-radius: 12px;
             width: 90%; 
-            max-width: 700px; /* Adjust as needed */
+            max-width: 700px; 
             position: relative;
             box-shadow: 0 10px 25px rgba(0,0,0,0.3);
             max-height: 90vh;
@@ -87,7 +112,6 @@
         .iframe-container {
             position: relative;
             overflow: hidden;
-            /* Give it a large height to fit the long form content, adjustable based on form length */
             padding-top: 1500px; 
         }
 
@@ -125,28 +149,41 @@
             </div>
         </nav>
     </header>
-
-    <main>
-        <!-- Hero Section -->
+    
+    <!-- Intro Screen Section (Black space that fades out) -->
+    <div id="intro-screen">
+        <!-- 
+            #################################################################
+            # THIS IS YOUR IMAGE PLACEHOLDER: 
+            # 1. Replace "placeholder.jpg" with your actual image file name or URL.
+            # 2. The custom CSS above ensures this image fills the screen and fades out 
+            #    with the black screen overlay.
+            #################################################################
+        -->
+        <img src="intro.jpg" alt="SDAS Introductory Visual" onerror="this.style.display='none'; this.parentElement.style.backgroundColor='#000000';" />
+    </div>
+    
+    <main id="main-content">
+        <!-- Hero Section (Static content moved down to be visible after intro) -->
         <section id="hero" class="py-20 md:py-28 bg-white">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight">SDAS: The Platform for Autonomous Swarm Intelligence.</h1>
-                <p class="mt-4 max-w-3xl mx-auto text-lg md:text-xl text-gray-600">Decentralized Middleware for Secure, AI-Driven Drone Operations.</p>
+                <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight">SDAS: The <strong>Autonomous Platform</strong> for High-Fidelity Data Acquisition.</h1>
+                <p class="mt-4 max-w-3xl mx-auto text-lg md:text-xl text-gray-600">We orchestrate <strong>existing sensor platforms</strong> into a swarm network, fixing the data acquisition gap and delivering 10x the Data Velocity.</p>
                 <!-- Key Pain Point Statistic -->
                 <div class="mt-12 inline-block bg-rose-50 border border-rose-200 rounded-xl p-6 shadow-lg">
-                    <p class="text-xl text-rose-700">The Pain Point</p>
-                    <p class="text-6xl font-bold text-rose-600">92%</p>
-                    <p class="mt-2 text-lg text-rose-700">of current drone swarm missions fail due to communication instability or reliance on low-level human control.</p>
+                    <p class="text-xl text-rose-700">The Problem Solved</p>
+                    <p class="text-6xl font-bold text-rose-600">1,000 Acres</p>
+                    <p class="mt-2 text-lg text-rose-700">The current limit for real-time, high-density data acquisition without a dedicated, scalable autonomy platform.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Problem & Solution Section (Interactive Tabs) -->
+        <!-- Problem & Solution Section (Interactive Tabs) - Focused on Scale and Data Gap -->
         <section id="problem" class="py-20">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Middleware: The Platform for Future AI Autonomy</h2>
-                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">The primary hurdle in current swarm operations is <strong>operator overload</strong>, which bottlenecks mission scale by forcing humans to manage complex, low-level flight decisions in real-time. SDAS overcomes this with a <strong>decentralized platform</strong> where <strong>individual drones possess intelligence</strong> to self-manage and coordinate. This shift enables operators to focus solely on high-level objectives, delivering <strong>true, resilient collective autonomy</strong>.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">The Scale & Velocity Gap: Why Fixed Sensors Fail Over Vast Geographies</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">Large-scale physical assets demand <strong>real-time, sub-meter resolution data</strong> to operate efficiently. Fixed sensors are too sparse. Human-piloted inspection is too slow. SDAS is the autonomous platform that turns <strong>compatible hardware</strong> into coordinated, real-time sensor networks.</p>
                 </div>
 
                 <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-4 sm:p-6">
@@ -155,13 +192,13 @@
                         <button id="tab-comm" class="tech-tab flex-1 py-2 px-4 text-sm font-semibold rounded-md transition-colors duration-300">Communication</button>
                         <button id="tab-net" class="tech-tab flex-1 py-2 px-4 text-sm font-semibold rounded-md transition-colors duration-300">Network</button>
                         <button id="tab-auto" class="tech-tab flex-1 py-2 px-4 text-sm font-semibold rounded-md transition-colors duration-300">Autonomy</button>
-                        <button id="tab-sec" class="tech-tab flex-1 py-2 px-4 text-sm font-semibold rounded-md transition-colors duration-300">Security</button>
+                        <button id="tab-port" class="tech-tab flex-1 py-2 px-4 text-sm font-semibold rounded-md transition-colors duration-300">Portability</button>
                     </div>
 
                     <!-- Content Comparison Area -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="border border-gray-200 rounded-lg p-6">
-                            <h3 class="text-lg font-semibold text-gray-500">Legacy Systems (The Bottleneck)</h3>
+                            <h3 class="text-lg font-semibold text-gray-500">Legacy Operations (The Bottleneck)</h3>
                             <div id="legacy-content" class="mt-4 text-gray-600 space-y-2"></div>
                         </div>
                         <div class="border-2 border-blue-500 rounded-lg p-6 bg-blue-50">
@@ -173,25 +210,25 @@
             </div>
         </section>
 
-        <!-- Technology & IP Section -->
+        <!-- Technology & IP Section (New focus: Agnostic brain, not the vehicle) -->
         <section id="technology" class="py-20 bg-white">
                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">The Secret Sauce: Decentralized Modem Architecture</h2>
-                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">Our advantage lies in our proprietary flight computer and a middleware layer that abstracts communication, enabling unprecedented flexibility and intelligence for AI model deployment.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">The Secret Sauce: Instrument-Agnostic Swarm Intelligence</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">Our advantage is a software and small hardware layer that abstracts vehicle control, allowing us to leverage cheaper, rapidly replaceable <strong>third-party hardware</strong>. <strong>We do not manufacture or compete with instrument providers.</strong></p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                     <div class="bg-gray-50 rounded-xl p-6 border">
-                        <h3 class="text-xl font-semibold text-gray-800">Proprietary Flight Computer Design</h3>
-                        <p class="mt-2 text-gray-600">A compact, ruggedized hardware unit design hosting the SDAS middleware, guaranteeing performance and security integrity for on-board AI processing. <b>Manufacturing is outsourced (lean CapEx).</b></p>
+                        <h3 class="text-xl font-semibold text-gray-800">The Universal Swarm Control Unit (USCU)</h3>
+                        <p class="mt-2 text-gray-600">A compact hardware host for the SDAS middleware. <strong>This is not a vehicle.</strong> It guarantees performance and security while enabling the platform to control any compatible instrument.</p>
                     </div>
                     <div class="bg-gray-50 rounded-xl p-6 border">
                         <h3 class="text-xl font-semibold text-gray-800">Dynamic Channel Bonding</h3>
-                        <p class="mt-2 text-gray-600">Middleware seamlessly shifts loads between <b>Cellular Network</b> and Radio links based on availability, security, and bandwidth needs, optimizing data transfer for AI insights.</p>
+                        <p class="mt-2 text-gray-600">The core middleware seamlessly shifts data loads between network links (Cellular, Radio, Mesh) based on availability, ensuring <strong>uninterrupted data acquisition</strong> across vast sites.</p>
                     </div>
                     <div class="bg-gray-50 rounded-xl p-6 border">
-                        <h3 class="text-xl font-semibold text-gray-800">Zero-Pre-Programming Autonomy</h3>
-                        <p class="mt-2 text-gray-600">Drones autonomously form and adapt formations to execute high-level mission goals with minimal initial setup, allowing for rapid deployment of new autonomous behaviors.</p>
+                        <h3 class="text-xl font-semibold text-gray-800">Decentralized Goal-Based Autonomy</h3>
+                        <p class="mt-2 text-gray-600">Swarm units autonomously form and adapt formations to execute high-level mission goals (e.g., "Inspect 1000 acres") with minimal human input, allowing for rapid deployment.</p>
                     </div>
                 </div>
             </div>
@@ -201,29 +238,29 @@
         <section id="market" class="py-20">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">TAM, SAM, & SOM: Capturing the Decentralized Autonomy Market</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">TAM, SAM, & SOM: Capturing the Universal Autonomy Layer</h2>
                     <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">We target the high-growth 'Decentralized Autonomous Systems (DAS) Middleware' segment, positioning us for high-multiple growth in the platform layer.</p>
                 </div>
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <!-- TAM vs SAM Chart -->
                     <div>
-                        <h3 class="text-2xl font-semibold text-center mb-4">Market Segmentation: TAM vs. SAM</h3>
+                        <h3 class="text-2xl font-semibold text-center mb-4">Market Segmentation: <strong>TAM vs. SAM</strong></h3>
                         <div class="chart-container">
                             <canvas id="marketChart"></canvas>
                         </div>
                         <div class="text-center mt-6 text-gray-700">
-                               <p class="font-bold">TAM (Total Addressable Market):</p> The entire global Commercial and Military Drone ecosystem ($150 Billion).
-                               <p class="font-bold mt-2">SAM (Serviceable Addressable Market):</p> The specific segment addressable by autonomous swarm middleware ($4.5 Billion).
+                               <p class="font-bold">TAM (Total Addressable Market):</p> The entire global Commercial and Military Drone ecosystem (<strong>$150 Billion</strong>).
+                               <p class="font-bold mt-2">SAM (Serviceable Addressable Market):</p> The specific segment addressable by autonomous swarm middleware (<strong>$4.5 Billion</strong>).
                         </div>
                     </div>
                     <!-- SOM Chart -->
                     <div>
-                        <h3 class="text-2xl font-semibold text-center mb-4">Initial SOM (Serviceable Obtainable Market) Goal: \$150M</h3>
+                        <h3 class="text-2xl font-semibold text-center mb-4">Initial <strong>SOM</strong> (Serviceable Obtainable Market) Goal: <strong>\$150M</strong></h3>
                         <div class="chart-container">
                             <canvas id="samChart"></canvas>
                         </div>
                         <div class="text-center mt-6 text-gray-700">
-                            <p class="font-bold">SOM (Serviceable Obtainable Market):</p> The realistic market share we aim to capture within 3 years, focused on high-value pilot programs ($150 Million).
+                            <p class="font-bold">SOM (Serviceable Obtainable Market):</p> The realistic market share we aim to capture within 3 years, focused on high-value pilot programs (<strong>$150 Million</strong>).
                         </div>
                     </div>
                 </div>
@@ -234,35 +271,35 @@
         <section id="applications" class="py-20 bg-white">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Platform Capabilities in Action</h2>
-                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">SDAS enables missions previously impossible, from high-stakes national security to autonomous commercial logistics. Click each sector to see the value creation.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Data Velocity in Action: Enabling Three Core Enterprise Capabilities</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">SDAS leverages <strong>existing sensor platforms</strong> to create high-speed data acquisition tools for three high-value business outcomes.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Application Card 1 -->
                     <div class="app-card cursor-pointer bg-gray-50 p-6 rounded-lg border hover:shadow-lg transition-shadow">
-                        <h3 class="text-xl font-semibold text-gray-800">Advanced ISR & Reconnaissance</h3>
-                        <p class="mt-2 text-gray-600">Deploy large drone armies for coordinated offensives, defensive screening, and suppressing enemy air defenses.</p>
+                        <h3 class="text-xl font-semibold text-gray-800">Persistent Intelligence & Reconnaissance (PIR)</h3>
+                        <p class="mt-2 text-gray-600">Deploying <strong>mobile sensor units</strong> for <strong>continuous, wide-area data acquisition</strong> in vast or contested areas, creating real-time operational pictures for defense and security.</p>
                         <div class="app-details hidden mt-4 pt-4 border-t border-gray-200">
-                           <p class="font-semibold text-blue-600">Value Creation: Force Multiplier</p>
-                           <p class="text-gray-600">Enables complex tactics like decoys, flanking, and simultaneous coordinated attacks without risking pilots. <strong>Defense & Security Sector</strong>.</p>
+                           <p class="font-semibold text-blue-600">Value Creation: Data Density</p>
+                           <p class="text-gray-600">Delivers superior area coverage and data continuity compared to single-unit surveillance. <strong>Defense & Security Sector</strong>.</p>
                         </div>
                     </div>
                     <!-- Application Card 2 -->
                     <div class="app-card cursor-pointer bg-gray-50 p-6 rounded-lg border hover:shadow-lg transition-shadow">
-                        <h3 class="text-xl font-semibold text-gray-800">Autonomous Infrastructure Monitoring</h3>
-                        <p class="mt-2 text-gray-600">Autonomous swarms monitor vast solar panel arrays for micro-cracks, hotspots, and intrusion.</p>
+                        <h3 class="text-xl font-semibold text-gray-800">Digital Asset Integrity (DAI)</h3>
+                        <p class="mt-2 text-gray-600">Autonomous, high-frequency inspections of critical assets (e.g., solar farms, pipelines, bridges). Our platform integrates high-volume inspection data directly into ERPs. <strong>Current Pilot Focus: Solar Drone Inspection.</strong></p>
                            <div class="app-details hidden mt-4 pt-4 border-t border-gray-200">
-                            <p class="font-semibold text-blue-600">Value Creation: Efficiency</p>
-                            <p class="text-gray-600">Covers 10x the ground of traditional methods with 99% data integrity due to mesh communication resilience. <strong>Critical Infrastructure Sector</strong>.</p>
+                            <p class="font-semibold text-blue-600">Value Creation: Velocity & Actionability</p>
+                            <p class="text-gray-600">Reduces inspection time by 10x and integrates integrity data directly into management workflows. <strong>Critical Infrastructure Sector</strong>.</p>
                         </div>
                     </div>
                     <!-- Application Card 3 -->
                     <div class="app-card cursor-pointer bg-gray-50 p-6 rounded-lg border hover:shadow-lg transition-shadow">
-                        <h3 class="text-xl font-semibold text-gray-800">AI Model Deployment & Testing</h3>
-                        <p class="mt-2 text-gray-600">Rapidly deploy and test new AI models (e.g., computer vision, pathfinding) across a fleet using our decentralized data pipeline.</p>
+                        <h3 class="text-xl font-semibold text-gray-800">High-Fidelity Digital Twins (HFDT)</h3>
+                        <p class="mt-2 text-gray-600">Multi-sensor data acquisition to build accurate, frequently updated digital representations of physical sites, supporting simulation, construction, and planning.</p>
                            <div class="app-details hidden mt-4 pt-4 border-t border-gray-200">
-                            <p class="font-semibold text-blue-600">Value Creation: Speed & Iteration</p>
-                            <p class="text-gray-600">Reduces development cycles by providing a robust, decentralized OS layer for all AI-driven drone innovation. <strong>Niche AI Platforms Sector</strong>.</p>
+                            <p class="font-semibold text-blue-600">Value Creation: Precision</p>
+                            <p class="text-gray-600">Ensures millimeter-level geospatial precision and high-frequency updates, making digital twins viable for real-time asset management. <strong>Niche AI Platforms Sector</strong>.</p>
                         </div>
                     </div>
                 </div>
@@ -274,45 +311,39 @@
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                    <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-900">High-Margin, Recurring Revenue</h2>
-                    <p class="text-xl font-medium text-blue-600">A Licensing-First Model</p>
-                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">Our business model is designed for rapid adoption and long-term, scalable revenue streams, leveraging high-margin software licensing while outsourcing hardware manufacturing.</p>
+                    <p class="text-xl font-medium text-blue-600">A Licensing-First Model (Instrument-Agnostic)</p>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">Our business model is designed for <strong>rapid adoption</strong> and <strong>long-term, scalable revenue streams</strong>, leveraging high-margin software licensing while outsourcing hardware manufacturing.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto text-center">
                     <div class="bg-white rounded-xl p-8 border shadow-sm">
                         <h3 class="text-2xl font-semibold text-gray-800">Perpetual Software Licensing</h3>
-                        <p class="mt-4 text-gray-600">Initial revenue from high-value licenses for the core SDAS middleware, sold per unit, ensuring immediate ROI from IP.</p>
+                        <p class="mt-4 text-gray-600">Initial revenue from high-value licenses for the core SDAS middleware, sold per unit, ensuring <strong>immediate ROI</strong> from IP.</p>
                     </div>
                     <div class="bg-white rounded-xl p-8 border shadow-sm">
                         <h3 class="text-2xl font-semibold text-gray-800">SaaS Platform (Subscription)</h3>
-                        <p class="mt-4 text-gray-600">Recurring revenue from annual subscriptions to our Swarm Management Console (SMC) for over-the-air updates, telemetry, and security patching.</p>
+                        <p class="mt-4 text-gray-600">Recurring revenue from annual subscriptions to our Swarm Management Console (SMC) for over-the-air updates, telemetry, and <strong>security patching</strong>.</p>
                     </div>
                     <div class="bg-white rounded-xl p-8 border shadow-sm">
-                        <h3 class="text-2xl font-semibold text-gray-800">Custom Flight Computer Sales</h3>
-                        <p class="mt-4 text-gray-600">High-margin sales of our proprietary flight computer (manufactured by 3rd parties). The hardware is open to running customer-developed software, ensuring platform flexibility.</p>
+                        <h3 class="text-2xl font-semibold text-gray-800">Universal Swarm Control Unit Sales</h3>
+                        <p class="mt-4 text-gray-600">High-margin sales of our proprietary USCU hardware (manufactured by 3rd parties). The hardware is <strong>essential</strong> for hosting the swarm autonomy software.</p>
                     </div>
-                </div>
-                <div class="text-center mt-12">
-                    <p class="text-xl text-gray-600">Target ARPU (Average Revenue Per Unit): <span class="font-bold text-2xl text-blue-600">₹6,60,000 - ₹12,00,000</span> (approx. 3-year LTV)</p>
                 </div>
             </div>
         </section>
 
-        <!-- The Ask & Exit Strategy Section (UPDATED FOR LEAN SEED) -->
+        <!-- The Ask & Exit Strategy Section -->
         <section id="ask" class="py-20 bg-white">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-900">The Ask & Long-Term Vision</h2>
-                       <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">We are seeking lean seed funding to finalize core software development, secure our first pilot projects, and establish IP.</p>
+                       <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">We are seeking strategic partners to finalize core software development, secure our first pilot projects, and establish IP.</p>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-                    <!-- Funding Details -->
+                    <!-- Funding Details Placeholder (Modified) -->
                     <div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Seeking <span class="text-blue-600">₹60 Lakhs</span> Seed Round</h3>
-                        <!-- FIX: Changed <b> to ** to <b>. This line was already correct but ensuring consistency. -->
-                        <p class="lg:text-lg text-gray-600 mb-2">Equivalent to approx. $72,000 USD, this seed funding is based on a conservative <b>₹350 Lakhs Pre-Money Valuation</b>.</p>
-                        <!-- FIX: Changed ** to <b> for GitHub compatibility -->
-                        <p class="lg:text-lg text-gray-600 mb-6">This investment secures a <b>17.1% equity stake</b> and provides a 12-month runway focused entirely on software completion and client validation.</p>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Investment Opportunity</h3>
+                        <p class="lg:text-lg text-gray-600 mb-6">We are seeking <strong>strategic partners</strong> to accelerate the deployment of our platform and scale our operations across target markets. Details on the current funding round are available upon request.</p>
                         
                         <!-- Call to Action Button for the Modal -->
                         <button onclick="openFormModal()" class="w-full lg:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-xl">
@@ -320,12 +351,11 @@
                         </button>
 
                         <h4 class="text-xl font-semibold text-gray-800 mt-8">Long-Term Vision (Exit Strategy)</h4>
-                        <!-- FIX: Changed ** to <b> for GitHub compatibility -->
-                        <p class="mt-2 text-gray-600">We are building a <b>category-defining platform</b> with a long-term goal of market dominance, focusing on capturing majority market share in DAS middleware. The strategy is centered on sustained revenue growth, profitability, and an <b>eventual public offering (IPO)</b> or secondary market investment round.</p>
+                        <p class="mt-2 text-gray-600">We are building a <strong>category-defining platform</strong> with a long-term goal of market dominance, focusing on capturing majority market share in DAS middleware. The strategy is centered on sustained revenue growth, profitability, and an <strong>eventual public offering (IPO)</strong> or secondary market investment round.</p>
                     </div>
                     <!-- Use of Funds Chart -->
                     <div>
-                        <h3 class="text-2xl font-semibold text-center mb-4">Use of Funds (₹60 Lakhs Allocation)</h3>
+                        <h3 class="text-2xl font-semibold text-center mb-4">Use of Funds Allocation</h3>
                         <div class="chart-container">
                             <canvas id="fundsChart"></canvas>
                         </div>
@@ -333,36 +363,31 @@
                 </div>
             </div>
         </section>
-    </main>
 
-    <!-- Modal for Embedded Google Form -->
-    <div id="formModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeFormModal()">&times;</span>
-            <h2 class="text-2xl font-bold text-gray-900 mb-4">Schedule a Technical Demo</h2>
-            
-            <div class="iframe-container">
-                <!-- 
-                    The Google Form is embedded here using your provided link, with '?embedded=true' appended
-                    to ensure it renders properly inside the iframe.
-                -->
-                <iframe 
-                    src="https://docs.google.com/forms/d/e/1FAIpQLScV-hW3_Kq_yGzcfkTjFmF8KHX00xMWTMd4bLUbnYxs0NP8Vw/viewform?embedded=true" 
-                    frameborder="0" 
-                    marginheight="0" 
-                    marginwidth="0"
-                    loading="lazy">Loading...</iframe>
+        <!-- Modal for Embedded Google Form -->
+        <div id="formModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeFormModal()">&times;</span>
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Schedule a Technical Demo</h2>
+                
+                <div class="iframe-container">
+                    <iframe 
+                        src="https://docs.google.com/forms/d/e/1FAIpQLScV-hW3_Kq_yGzcfkTjFmF8KHX00xMWTMd4bLUbnYxs0NP8Vw/viewform?embedded=true" 
+                        frameborder="0" 
+                        marginheight="0" 
+                        marginwidth="0"
+                        loading="lazy">Loading...</iframe>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
 
 
     <!-- Footer with Contact Info -->
     <footer class="bg-gray-800 text-white">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
             <h2 class="text-3xl font-bold">Invest in the Future of Autonomous Coordination.</h2>
-            <p class="mt-4 max-w-2xl mx-auto text-gray-300">SDAS is not just drone software; it is the fundamental networking layer that enables true, resilient autonomy.</p>
-            <!-- Removed the large button from the footer and moved it to the Ask section (#ask) -->
+            <p class="mt-4 max-w-2xl mx-auto text-gray-300">SDAS is not just drone software; it is the <strong>fundamental networking layer</strong> that enables true, resilient autonomy across any compatible platform.</p>
             <p class="mt-8 text-gray-400">Jeevesh | +91 9940344764 | Aaruran Software Solutions</p>
         </div>
     </footer>
@@ -388,196 +413,217 @@
             }
         }
 
-
-        // --- Tech Tab Data ---
+        
+        // --- Tech Tab Data (Retained) ---
         const techData = {
             comm: {
                 legacy: `<strong>Communication Lock-In:</strong> Swarms are tethered to a single method (Wi-Fi, radio) and cannot dynamically switch. This creates a single point of failure that is easily jammed or compromised.`,
-                sdas: `<strong>Protocol-Agnostic Modem:</strong> Our middleware abstracts the physical radio link (<strong>Cellular Network</strong>, Radio, Mesh) from swarm logic, allowing hardware flexibility and future-proofing the system.`
+                sdas: `<strong>Protocol-Agnostic Modem:</strong> Our middleware abstracts the physical radio link (<strong>Cellular Network</strong>, Radio, Mesh) from swarm logic, allowing hardware flexibility and future-proofing the system for any compatible unit.`
             },
             net: {
-                legacy: `<strong>Rigid Command & Control:</strong> Systems rely on centralized command, creating a devastating choke point. Unable to handle on-the-fly mission changes or loss of a commander drone.`,
-                sdas: `<strong>True Peer-to-Peer Mesh:</strong> A resilient, self-healing network where every drone is a node. This eliminates the single point of failure and ensures mission continuity in contested environments.`
+                legacy: `<strong>Rigid Command & Control:</strong> Systems rely on centralized command, creating a devastating choke point. Unable to handle on-the-fly mission changes or loss of a commander unit.`,
+                sdas: `<strong>True Peer-to-Peer Mesh:</strong> A resilient, self-healing network where every unit is a node. This eliminates the single point of failure and ensures mission continuity in contested environments.`
             },
             auto: {
-                legacy: `<strong>Operator Overload:</strong> Swarm mission success is currently bottlenecked by the human operator, who must micromanage complex, low-level positional decisions (e.g., altitude, separation) for dozens of units.`,
-                sdas: `<strong>Decentralized Intelligence:</strong> Each unit runs the SDAS middleware, allowing it to interpret high-level operator goals and make all necessary tactical, positional, and comms decisions autonomously on the edge.`
+                legacy: `<strong>Operator Overload:</strong> Mission success is currently bottlenecked by the human operator, who must micromanage complex, low-level positional decisions for dozens of units.`,
+                sdas: `<strong>Decentralized Intelligence:</strong> Each unit runs the SDAS USCU, allowing it to interpret high-level operator goals ("Inspect 1000 Acres") and make all necessary tactical decisions autonomously on the edge.`
             },
-            sec: {
-                legacy: `<strong>Standard Commercial Encryption:</strong> Vulnerable to sophisticated state-level actors and electronic warfare tactics. Not suitable for mission-critical operations.`,
-                sdas: `<strong>Military-Grade Security:</strong> All networks are secured end-to-end with post-quantum encryption standards, providing an end-to-end proprietary security layer.`
+            port: { 
+                legacy: `<strong>Hardware Locked:</strong> Solutions are deeply integrated into specific sensor models, requiring a complete re-engineering effort to port to a new brand or ground instrument.`,
+                sdas: `<strong>Instrument Agnostic Portability:</strong> The USCU and software sit above the vehicle's controller, abstracting control. This allows rapid integration and portability to any compatible mobile sensor platform (air, ground, or sea), mitigating supply chain risk.`
             }
         };
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const legacyContent = document.getElementById('legacy-content');
-            const sdasContent = document.getElementById('sdas-content');
-            const tabs = document.querySelectorAll('.tech-tab');
+        function initializePageElements() {
+             // --- Existing Tab & Chart Initialization ---
+             const legacyContent = document.getElementById('legacy-content');
+             const sdasContent = document.getElementById('sdas-content');
+             const tabs = document.querySelectorAll('.tech-tab');
 
-            function updateTechContent(techKey) {
-                // Update text content
-                legacyContent.innerHTML = techData[techKey].legacy;
-                sdasContent.innerHTML = techData[techKey].sdas;
-                
-                // Update tab styles
-                tabs.forEach(tab => {
-                    tab.classList.remove('active-tab', 'bg-blue-600', 'text-white');
-                    tab.classList.add('bg-gray-100', 'text-gray-700');
-                    if (tab.id === `tab-${techKey}`) {
-                        tab.classList.add('active-tab', 'bg-blue-600', 'text-white');
-                        tab.classList.remove('bg-gray-100', 'text-gray-700');
-                    }
-                });
-            }
+             function updateTechContent(techKey) {
+                 // Update text content
+                 legacyContent.innerHTML = techData[techKey].legacy;
+                 sdasContent.innerHTML = techData[techKey].sdas;
+                 
+                 // Update tab styles
+                 tabs.forEach(tab => {
+                     tab.classList.remove('active-tab', 'bg-blue-600', 'text-white');
+                     tab.classList.add('bg-gray-100', 'text-gray-700');
+                     if (tab.id === `tab-${techKey}`) {
+                         tab.classList.add('active-tab', 'bg-blue-600', 'text-white');
+                         tab.classList.remove('bg-gray-100', 'text-gray-700');
+                     }
+                 });
+             }
 
-            // Set up click listeners for tech tabs
-            tabs.forEach(tab => {
-                tab.addEventListener('click', (e) => {
-                    const techKey = e.target.id.split('-')[1];
-                    updateTechContent(techKey);
-                });
-            });
+             // Set up click listeners for tech tabs
+             tabs.forEach(tab => {
+                 tab.addEventListener('click', (e) => {
+                     const techKey = e.target.id.split('-')[1];
+                     updateTechContent(techKey);
+                 });
+             });
 
-            // Initialize with the first tab content
-            updateTechContent('comm');
+             // Initialize with the first tab content
+             updateTechContent('comm');
 
-            // --- Application Card Interactivity ---
-            const appCards = document.querySelectorAll('.app-card');
-            appCards.forEach(card => {
-                card.addEventListener('click', () => {
-                    const details = card.querySelector('.app-details');
-                    details.classList.toggle('hidden');
-                });
-            });
+             // Application Card Interactivity
+             const appCards = document.querySelectorAll('.app-card');
+             appCards.forEach(card => {
+                 card.addEventListener('click', () => {
+                     const details = card.querySelector('.app-details');
+                     details.classList.toggle('hidden');
+                 });
+             });
 
-            // --- Chart.js Configuration ---
-            Chart.defaults.font.family = "'Inter', sans-serif";
-            Chart.defaults.font.weight = '500';
+             // Chart.js Configuration
+             Chart.defaults.font.family = "'Inter', sans-serif";
+             Chart.defaults.font.weight = '500';
 
-            // 1. TAM vs SAM Bar Chart
-            const marketChartCtx = document.getElementById('marketChart')?.getContext('2d');
-            if (marketChartCtx) {
-                new Chart(marketChartCtx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['Global Drone Ecosystem (TAM)', 'DAS Middleware (SAM)'],
-                        datasets: [
-                           {
-                             label: 'Total Addressable Market (TAM)',
-                             data: [150], // $150 Billion
-                             backgroundColor: 'rgba(156, 163, 175, 0.6)',
-                             borderColor: 'rgba(156, 163, 175, 1)',
-                             borderWidth: 1
-                           },
-                           {
-                             label: 'Serviceable Addressable Market (SAM)',
-                             data: [0, 4.5], // $4.5 Billion
-                             backgroundColor: 'rgba(59, 130, 246, 0.6)',
-                             borderColor: 'rgba(59, 130, 246, 1)',
-                             borderWidth: 1
-                           }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        indexAxis: 'y', // Make it horizontal
-                        plugins: {
-                            title: { display: false },
-                            tooltip: {
-                                callbacks: {
-                                    label: function(context) {
-                                        return `${context.dataset.label}: $${context.raw}B`;
-                                    }
-                                }
-                            }
-                        },
-                        scales: {
-                            x: {
-                                beginAtZero: true,
-                                title: {
-                                    display: true,
-                                    text: 'Market Size ($ Billions)'
-                                }
+             // 1. TAM vs SAM Bar Chart
+             const marketChartCtx = document.getElementById('marketChart')?.getContext('2d');
+             if (marketChartCtx) {
+                 new Chart(marketChartCtx, {
+                     type: 'bar',
+                     data: {
+                         labels: ['Global Drone Ecosystem (TAM)', 'DAS Middleware (SAM)'],
+                         datasets: [
+                            {
+                              label: 'Total Addressable Market (TAM)',
+                              data: [150], 
+                              backgroundColor: 'rgba(156, 163, 175, 0.6)',
+                              borderColor: 'rgba(156, 163, 175, 1)',
+                              borderWidth: 1
                             },
-                             y: {
-                                stacked: true 
-                            }
-                        }
-                    }
-                });
-            }
-
-            // 2. SOM Donut Chart (Initial Target)
-            const samChartCtx = document.getElementById('samChart')?.getContext('2d');
-            if (samChartCtx) {
-                new Chart(samChartCtx, {
-                    type: 'doughnut',
-                    data: {
-                        // Data in Millions
-                        labels: ['Defense & Security ($90M)', 'Critical Infrastructure ($45M)', 'Niche AI Platforms ($15M)'],
-                        datasets: [{
-                            data: [90, 45, 15], 
-                            backgroundColor: ['rgba(59, 130, 246, 0.7)', 'rgba(16, 185, 129, 0.7)', 'rgba(245, 158, 11, 0.7)'],
-                            borderColor: ['#ffffff'],
-                            borderWidth: 2
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
+                            {
+                              label: 'Serviceable Addressable Market (SAM)',
+                              data: [0, 4.5], 
+                              backgroundColor: 'rgba(59, 130, 246, 0.6)',
+                              borderColor: 'rgba(59, 130, 246, 1)',
+                              borderWidth: 1
+                            }]
+                     },
+                     options: {
+                         responsive: true,
+                         maintainAspectRatio: false,
+                         indexAxis: 'y', 
+                         plugins: {
+                             title: { display: false },
                              tooltip: {
-                                callbacks: {
-                                    label: function(context) {
-                                        return ` ${context.label}`;
-                                    }
-                                }
-                            },
-                            legend: {
-                                position: 'bottom',
-                            }
-                        }
-                    }
-                });
-            }
+                                 callbacks: {
+                                     label: function(context) {
+                                         return `${context.dataset.label}: $${context.raw}B`;
+                                     }
+                                 }
+                             }
+                         },
+                         scales: {
+                             x: {
+                                 beginAtZero: true,
+                                 title: {
+                                     display: true,
+                                     text: 'Market Size ($ Billions)'
+                                 }
+                             },
+                              y: {
+                                 stacked: true 
+                             }
+                         }
+                     }
+                 });
+             }
 
-            // 3. Use of Funds Donut Chart (UPDATED FOR LEAN ₹60 LAKHS)
-            const fundsChartCtx = document.getElementById('fundsChart')?.getContext('2d');
-            if (fundsChartCtx) {
-                new Chart(fundsChartCtx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Core Software Dev & IP Protection (50%)', 'Pilot Projects & Validation (30%)', 'Lean Operational Overhead (20%)'],
-                        datasets: [{
-                            data: [50, 30, 20],
-                            backgroundColor: [
-                                'rgba(59, 130, 246, 0.7)',
-                                'rgba(16, 185, 129, 0.7)',
-                                'rgba(245, 158, 11, 0.7)'
-                            ],
-                            borderColor: '#ffffff',
-                            borderWidth: 2
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                position: 'bottom',
-                            },
-                             tooltip: {
-                                callbacks: {
-                                    label: function(context) {
-                                        return ` ${context.label}`;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                });
+             // 2. SOM Donut Chart (Initial Target)
+             const samChartCtx = document.getElementById('samChart')?.getContext('2d');
+             if (samChartCtx) {
+                 new Chart(samChartCtx, {
+                     type: 'doughnut',
+                     data: {
+                         labels: ['Defense & Security ($90M)', 'Critical Infrastructure ($45M)', 'Niche AI Platforms ($15M)'],
+                         datasets: [{
+                             data: [90, 45, 15], 
+                             backgroundColor: ['rgba(59, 130, 246, 0.7)', 'rgba(16, 185, 129, 0.7)', 'rgba(245, 158, 11, 0.7)'],
+                             borderColor: ['#ffffff'],
+                             borderWidth: 2
+                         }]
+                     },
+                     options: {
+                         responsive: true,
+                         maintainAspectRatio: false,
+                         plugins: {
+                              tooltip: {
+                                 callbacks: {
+                                     label: function(context) {
+                                         return ` ${context.label}`;
+                                     }
+                                 }
+                             },
+                             legend: {
+                                 position: 'bottom',
+                             }
+                         }
+                     }
+                 });
+             }
+
+             // 3. Use of Funds Donut Chart
+             const fundsChartCtx = document.getElementById('fundsChart')?.getContext('2d');
+             if (fundsChartCtx) {
+                 new Chart(fundsChartCtx, {
+                     type: 'doughnut',
+                     data: {
+                         labels: ['Core Software Dev & IP Protection (50%)', 'Pilot Projects & Validation (30%)', 'Lean Operational Overhead (20%)'],
+                         datasets: [{
+                             data: [50, 30, 20],
+                             backgroundColor: [
+                                 'rgba(59, 130, 246, 0.7)',
+                                 'rgba(16, 185, 129, 0.7)',
+                                 'rgba(245, 158, 11, 0.7)'
+                             ],
+                             borderColor: '#ffffff',
+                             borderWidth: 2
+                         }]
+                     },
+                     options: {
+                         responsive: true,
+                         maintainAspectRatio: false,
+                         plugins: {
+                             legend: {
+                                 position: 'bottom',
+                             },
+                              tooltip: {
+                                 callbacks: {
+                                     label: function(context) {
+                                         return ` ${context.label}`;
+                                     }
+                                 }
+                             }
+                         }
+                     }
+                 });
+             }
+        }
+
+
+        // Initialize the page elements and handle intro screen fade
+        window.onload = function () {
+            initializePageElements();
+            
+            // --- Intro Screen Fade Out Logic ---
+            const introScreen = document.getElementById('intro-screen');
+            if (introScreen) {
+                // Wait 500ms before starting the fade (allows time for an embedded image to load)
+                setTimeout(() => {
+                    // Start the CSS opacity transition (1.5s duration defined in CSS)
+                    introScreen.style.opacity = '0'; 
+                }, 500); 
+
+                // After the transition completes (1.5s) + initial delay (0.5s), hide the element completely
+                setTimeout(() => {
+                    introScreen.style.display = 'none'; 
+                }, 2000); 
             }
-        });
+        }
     </script>
 </body>
 </html>
