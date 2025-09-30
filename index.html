@@ -234,18 +234,18 @@
                             <canvas id="marketChart"></canvas>
                         </div>
                         <div class="text-center mt-6 text-gray-700">
-                               <p class="font-bold">TAM (Total Addressable Market):</p> The entire global Commercial and Military Drone ecosystem (<strong>$150 Billion</strong>).
-                               <p class="font-bold mt-2">SAM (Serviceable Addressable Market):</p> The specific segment addressable by autonomous swarm middleware (<strong>$4.5 Billion</strong>).
+                               <p class="font-bold">TAM (Total Addressable Market):</p> The entire global Commercial and Military Drone ecosystem (<strong>$7.09 Billion</strong>).
+                               <p class="font-bold mt-2">SAM (Serviceable Addressable Market):</p> The specific segment addressable by autonomous swarm middleware (<strong>$1.06 Billion</strong>).
                         </div>
                     </div>
                     <!-- SOM Chart -->
                     <div>
-                        <h3 class="text-2xl font-semibold text-center mb-4">Initial <strong>SOM</strong> (Serviceable Obtainable Market) Goal: <strong>\$150M</strong></h3>
+                        <h3 class="text-2xl font-semibold text-center mb-4">Initial <strong>SOM</strong> (Serviceable Obtainable Market) Goal: <strong>\$53M</strong></h3>
                         <div class="chart-container">
                             <canvas id="samChart"></canvas>
                         </div>
                         <div class="text-center mt-6 text-gray-700">
-                            <p class="font-bold">SOM (Serviceable Obtainable Market):</p> The realistic market share we aim to capture within 3 years, focused on high-value pilot programs (<strong>$150 Million</strong>).
+                            <p class="font-bold">SOM (Serviceable Obtainable Market):</p> The realistic market share we aim to capture within 3 years, focused on high-value pilot programs (<strong>$53 Million</strong>).
                         </div>
                     </div>
                 </div>
@@ -374,7 +374,7 @@
             <h2 class="text-3xl font-bold">Invest in the Future of Autonomous Coordination.</h2>
             <p class="mt-4 max-w-2xl mx-auto text-gray-300">SDAS is not just drone software; it is the <strong>fundamental networking layer</strong> that enables true, resilient autonomy across any compatible platform.</p>
             <p class="mt-8 text-gray-400">Jeevesh | +91 9940344764 | Aaruran Software Solutions</p>
-            <p class="mt-8 text-gray-400">Haridutt | +91 9966514680 | Aaruran Software Solutions</p>
+            <p class="mt-8 text-gray-400">Haridutt | +91 996651680 | Aaruran Software Solutions</p>
         </div>
     </footer>
 
@@ -476,14 +476,14 @@
                          datasets: [
                             {
                               label: 'Total Addressable Market (TAM)',
-                              data: [150], 
+                              data: [7.09], // Updated from 150
                               backgroundColor: 'rgba(156, 163, 175, 0.6)',
                               borderColor: 'rgba(156, 163, 175, 1)',
                               borderWidth: 1
                             },
                             {
                               label: 'Serviceable Addressable Market (SAM)',
-                              data: [0, 4.5], 
+                              data: [0, 1.06], // Updated from 0, 4.5
                               backgroundColor: 'rgba(59, 130, 246, 0.6)',
                               borderColor: 'rgba(59, 130, 246, 1)',
                               borderWidth: 1
@@ -519,15 +519,21 @@
                  });
              }
 
-             // 2. SOM Donut Chart (Initial Target)
+             // 2. SOM Donut Chart (Initial Target - Total $53M)
+             const som_pir = 31.8; // 60% of 53M
+             const som_dai = 15.9; // 30% of 53M
+             const som_hfdt = 5.3;  // 10% of 53M
+             
              const samChartCtx = document.getElementById('samChart')?.getContext('2d');
              if (samChartCtx) {
                  new Chart(samChartCtx, {
                      type: 'doughnut',
                      data: {
-                         labels: ['Defense & Security ($90M)', 'Critical Infrastructure ($45M)', 'Niche AI Platforms ($15M)'],
+                         // Updated labels to reflect new million dollar values
+                         labels: [`Defense & Security ($${som_pir}M)`, `Critical Infrastructure ($${som_dai}M)`, `Niche AI Platforms ($${som_hfdt}M)`],
                          datasets: [{
-                             data: [90, 45, 15], 
+                             // Updated data values, maintaining original proportions (60/30/10) of $53M
+                             data: [som_pir, som_dai, som_hfdt], 
                              backgroundColor: ['rgba(59, 130, 246, 0.7)', 'rgba(16, 185, 129, 0.7)', 'rgba(245, 158, 11, 0.7)'],
                              borderColor: ['#ffffff'],
                              borderWidth: 2
@@ -552,7 +558,7 @@
                  });
              }
 
-             // 3. Use of Funds Donut Chart
+             // 3. Use of Funds Donut Chart (No change to this chart)
              const fundsChartCtx = document.getElementById('fundsChart')?.getContext('2d');
              if (fundsChartCtx) {
                  new Chart(fundsChartCtx, {
